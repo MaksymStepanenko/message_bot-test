@@ -24,7 +24,7 @@ app.use(express.json());
 //liqpay
 app.get("/liqpay-gots");
 app.post("/liqpay-gots", liqpayController);
-// app.post("/gots-callback", gotsCallbackController);
+app.post("/gots-callback", gotsCallbackController);
 
 app.post("/", (req, res) => {
   res.status(200).json({ message: "Server is running" });

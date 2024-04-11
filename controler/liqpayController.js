@@ -17,7 +17,7 @@ const liqpayController = async (req, res) => {
     order_id: data.order_id,
     result_url: data.result_url,
     language: data.language,
-    // server_url: data.server_url,
+    server_url: data.server_url,
   });
   res.send(html);
 };
