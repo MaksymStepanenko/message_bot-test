@@ -1,0 +1,27 @@
+{
+  "name": "telegram_bot_message_sender",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "liqpay": "^0.0.1",
+    "morgan": "^1.10.0",
+    "node-telegram-bot-api": "^0.64.0",
+    "nodemailer": "^6.9.7",
+    "nodemon": "^3.0.1",
+    "sendgrid": "^5.2.3",
+    "sib-api-v3-sdk": "^8.5.0"
+  }
+}
