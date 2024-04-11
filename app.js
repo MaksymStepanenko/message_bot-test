@@ -5,7 +5,7 @@ const cors = require("cors");
 // const circle = require("./controler/circleController");
 // const gotsSender = require("./controler/gotsController");
 const liqpayController = require("./controler/liqpayController");
-// const gotsCallbackController = require("./controler/gotsCallbackController");
+const gotsCallbackController = require("./controler/gotsCallbackController");
 
 require("dotenv").config();
 
