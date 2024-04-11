@@ -1,9 +1,9 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const sendMessage = require("./controler/tuttiKidsControler");
-const circle = require("./controler/circleController");
-const gotsSender = require("./controler/gotsController");
+// const sendMessage = require("./controler/tuttiKidsControler");
+// const circle = require("./controler/circleController");
+// const gotsSender = require("./controler/gotsController");
 const liqpayController = require("./controler/liqpayController");
 // const gotsCallbackController = require("./controler/gotsCallbackController");
 
@@ -17,9 +17,9 @@ app.use(cors());
 app.use(express.json());
 
 //telegram and mail sender
-app.post("/tutti-kids", sendMessage);
-app.post("/circle", circle);
-app.post("/gots", gotsSender)
+// app.post("/tutti-kids", sendMessage);
+// app.post("/circle", circle);
+// app.post("/gots", gotsSender)
 
 //liqpay
 app.get("/liqpay-gots");
