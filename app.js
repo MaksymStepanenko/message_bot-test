@@ -1,7 +1,6 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 // const sendMessage = require("./controler/tuttiKidsControler");
 // const circle = require("./controler/circleController");
 // const gotsSender = require("./controler/gotsController");
@@ -16,7 +15,6 @@ const port = process.env.PORT || 3001;
 app.use(logger("dev"));
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.json());
 
 //telegram and mail sender
 // app.post("/tutti-kids", sendMessage);

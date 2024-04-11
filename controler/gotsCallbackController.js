@@ -9,7 +9,8 @@ const liqpay = new LiqPay(public_key, private_key);
 
 const gotsCallbackController = async (req, res) => {
   const { data, signature } = req.body;
-    console.log("Received data:", data);
+  console.log("req.body:", req.body);
+  console.log("Received data:", data);
   // Розкодування параметра data з base64 та перетворення його в рядок JSON
   const decodedData = Buffer.from(data, "base64").toString("utf-8");
 
