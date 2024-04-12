@@ -16,12 +16,7 @@ app.use(logger("dev"));
 app.use(cors());
 app.use(express.json());
 
-//telegram and mail sender
-// app.post("/tutti-kids", sendMessage);
-// app.post("/circle", circle);
-// app.post("/gots", gotsSender)
 
-//liqpay
 app.post("/liqpay-gots", liqpayController);
 app.post("/gots-callback", async (req, res) => {
   const { data, signature } = req.body;
