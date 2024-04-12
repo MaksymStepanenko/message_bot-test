@@ -6,8 +6,12 @@ const cors = require("cors");
 // const gotsSender = require("./controler/gotsController");
 const liqpayController = require("./controler/liqpayController");
 const gotsCallbackController = require("./controler/gotsCallbackController");
+const LiqPay = require("./controler/liqpay");
 
 require("dotenv").config();
+const public_key = process.env.LIQPAY_PUBLIC_KEY;
+const private_key = process.env.LIQPAY_PRIVATE_KEY;
+const liqpay = new LiqPay(public_key, private_key);
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -16,11 +20,21 @@ app.use(logger("dev"));
 app.use(cors());
 app.use(express.json());
 
-
 app.post("/liqpay-gots", liqpayController);
-app.post("/get-current-status" )
+app.post("/get-current-status", (req, res) => {
+  const order_id = req.body.order_id; // Припустимо, що ви передаєте order_id у тілі POST-запиту
+
+    liqpay.api("request", {
+        "action": "status",
+        "version": "3",
+        "order_id": order_id
+    }, function(json) {
+        console.log(json.status);
+        res.json(json); // Повертаємо статус у відповідь на запит
+    });
+});
 app.post("/gots-callback", (req, res) => {
- const { data, signature } = req.body;
+  const { data, signature } = req.body;
   console.log("req.body:", req.body);
 
   if (signature) {
