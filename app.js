@@ -23,7 +23,19 @@ app.use(express.json());
 
 //liqpay
 app.post("/liqpay-gots", liqpayController);
-app.post("/gots-callback", gotsCallbackController);
+app.post("/gots-callback", async (req, res) => {
+  console.log("req.body:", req.body);
+  const calculatedSignature = crypto
+    .createHash("sha1")
+    .update(private_key + data + private_key)
+    .digest("base64");
+  if (signature === calculatedSignature) {
+    console.log("Справжня відповідь від сервера LiqPay");
+  } else {
+    console.log("Недійсний запит від сервера LiqPay");
+  }
+  res.status(200).json({ message: "Server work" });
+});
 
 app.post("/", (req, res) => {
   res.status(200).json({ message: "Server is running" });
