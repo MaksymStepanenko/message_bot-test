@@ -22,7 +22,6 @@ app.use(express.json());
 // app.post("/gots", gotsSender)
 
 //liqpay
-app.get("/liqpay-gots");
 app.post("/liqpay-gots", liqpayController);
 app.post("/gots-callback", gotsCallbackController);
 
