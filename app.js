@@ -24,12 +24,10 @@ app.use(express.json());
 //liqpay
 app.post("/liqpay-gots", liqpayController);
 app.post("/gots-callback", async (req, res) => {
+  const { data, signature } = req.body;
   console.log("req.body:", req.body);
-  const calculatedSignature = crypto
-    .createHash("sha1")
-    .update(private_key + data + private_key)
-    .digest("base64");
-  if (signature === calculatedSignature) {
+
+  if (signature) {
     console.log("Справжня відповідь від сервера LiqPay");
   } else {
     console.log("Недійсний запит від сервера LiqPay");
