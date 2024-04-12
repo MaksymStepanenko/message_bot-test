@@ -22,16 +22,20 @@ app.use(express.json());
 
 app.post("/liqpay-gots", liqpayController);
 app.post("/get-current-status", (req, res) => {
-  const order_id = req.body.order_id; // Припустимо, що ви передаєте order_id у тілі POST-запиту
-
-    liqpay.api("request", {
-        "action": "status",
-        "version": "3",
-        "order_id": order_id
-    }, function(json) {
-        console.log(json.status);
-        res.json(json); // Повертаємо статус у відповідь на запит
-    });
+  const order_id = req.body.order_id;
+  liqpay.api(
+    "request",
+    {
+      public_key: public_key,
+      action: "status",
+      version: "3",
+      order_id: order_id,
+    },
+    function (json) {
+      console.log(json.status);
+      res.json(json);
+    }
+  );
 });
 app.post("/gots-callback", (req, res) => {
   const { data, signature } = req.body;
