@@ -8,6 +8,7 @@ const liqpay = new LiqPay(public_key, private_key);
 
 const liqpayController = async (req, res) => {
   const data = req.body;
+  // console.log(data);
   const html = liqpay.cnb_form({
     action: "pay",
     version: "3",
@@ -19,6 +20,7 @@ const liqpayController = async (req, res) => {
     language: data.language,
     server_url: data.server_url,
   });
+
   res.send(html);
 };
 
