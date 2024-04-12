@@ -18,8 +18,9 @@ app.use(express.json());
 
 
 app.post("/liqpay-gots", liqpayController);
-app.post("/gots-callback", async (req, res) => {
-  const { data, signature } = req.body;
+app.post("/get-current-status" )
+app.post("/gots-callback", (req, res) => {
+ const { data, signature } = req.body;
   console.log("req.body:", req.body);
 
   if (signature) {
