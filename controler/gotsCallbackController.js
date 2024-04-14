@@ -2,6 +2,7 @@ const LiqPay = require("./liqpay");
 const bodyParser = require("body-parser");
 const crypto = require("crypto");
 const querystring = require("querystring");
+const https = require("https");
 
 const public_key = process.env.LIQPAY_PUBLIC_KEY;
 const private_key = process.env.LIQPAY_PRIVATE_KEY;
