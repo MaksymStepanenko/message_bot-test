@@ -23,7 +23,6 @@ app.use(express.json());
 app.post("/liqpay-gots", liqpayController);
 app.post("/get-current-status", (req, res) => {
   const order_id = req.body.order_id;
-  console.log(order_id);
   liqpay.api(
     "request",
     {
