@@ -19,7 +19,7 @@ const gotsCallbackController = async (req, res) => {
     // Розкодувати дані з тіла запиту
     const decodedData = querystring.parse(body);
     const { data, signature } = decodedData;
-
+    
     // Розрахунок підпису
     const sign = liqpay.str_to_sign(private_key + data + private_key);
 
@@ -27,12 +27,12 @@ const gotsCallbackController = async (req, res) => {
     if (signature === sign) {
       // Якщо підписи співпадають, то запит від LiqPay є справжнім
       console.log("Справжня відповідь від сервера LiqPay");
-      console.log("Data:", data);
+      console.log("Data:", decodedData);
       // Обробка запиту відповідно до ваших потреб
     } else {
       // Якщо підписи не співпадають, запит може бути підробленим
       console.log("Недійсний запит від сервера LiqPay");
-      console.log("Data:", data);
+      console.log("Data:", decodedData);
     }
 
     res.end(); // Завершення відповіді
