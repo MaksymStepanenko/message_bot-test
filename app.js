@@ -21,20 +21,30 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/liqpay-gots", liqpayController);
-app.post("/get-current-status", (req, res) => {
-  const order_id = req.body.order_id;
-  liqpay.api(
-    "request",
-    {
-      action: "status",
-      version: "3",
-      order_id: order_id,
-    },
-    function (json) {
-      console.log(json.status);
-    }
-  );
+app.post("/get-current-status", async (req, res) => {
+  // Отримати дані з тіла запиту
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    // Розкодувати дані з тіла запиту
+    const decodedData = querystring.parse(body);
+    const { order_id } = decodedData;
+
+    // Викликати LiqPay API для запиту статусу оплати
+    liqpay.api("request", {
+      "action": "status",
+      "version": "3",
+      "order_id": order_id
+    }, function (json) {
+      console.log(json.status); // Вивести статус оплати в консоль
+      res.end(); // Завершити відповідь
+    });
+  });
 });
+  
 app.post("/gots-callback", gotsCallbackController);
 
 app.post("/", (req, res) => {
