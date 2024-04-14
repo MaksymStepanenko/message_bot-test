@@ -35,7 +35,7 @@ const gotsCallbackController = async (req, res) => {
 
       // Дані для відправки на mock API
       const postData = JSON.stringify({
-        id: order_id,
+        order_id: order_id,
         status: status,
       });
 
