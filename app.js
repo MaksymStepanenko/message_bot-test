@@ -35,17 +35,7 @@ app.post("/get-current-status", (req, res) => {
     }
   );
 });
-app.post("/gots-callback", (req, res) => {
-  const { data, signature } = req.body;
-  console.log("req.body:", req.body);
-
-  if (signature) {
-    console.log("Справжня відповідь від сервера LiqPay");
-  } else {
-    console.log("Недійсний запит від сервера LiqPay");
-  }
-  res.status(200).json({ message: "Server work" });
-});
+app.post("/gots-callback", gotsCallbackController);
 
 app.post("/", (req, res) => {
   res.status(200).json({ message: "Server is running" });
